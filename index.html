@@ -61,9 +61,11 @@ svg{display:block}
 .indice{position:fixed;inset:0 0 auto 0;z-index:10;height:var(--indice-h);background:rgba(23,28,26,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:var(--hairline) solid var(--line);transition:transform var(--t-entrada);will-change:transform}
 .indice.oculto{transform:translateY(-100%)}
 .indice nav{height:100%;padding-inline:var(--gutter);display:flex;align-items:center;gap:var(--sp-6)}
-.indice .marca{display:block;height:18px;flex:none;color:var(--text)}
+.indice .marca{display:flex;align-items:center;gap:var(--sp-3);height:18px;flex:none;color:var(--text)}
 .indice .marca svg{height:18px;width:auto}
-.indice ul{display:flex;gap:var(--sp-5);min-width:0;overflow-x:auto;scrollbar-width:none;white-space:nowrap;margin-left:auto}
+.indice .marca img{display:block;height:18px;width:auto}
+.indice .marca .x{font-size:var(--fs-sm);line-height:1;color:var(--text-3)}
+.indice ul{display:flex;gap:var(--sp-4);min-width:0;overflow-x:auto;scrollbar-width:none;white-space:nowrap;margin-left:auto}
 .indice ul::-webkit-scrollbar{display:none}
 .indice li{flex:none}
 .indice a{position:relative;display:inline-flex;align-items:center;gap:var(--sp-2);padding-block:var(--sp-2);font-size:var(--fs-sm);font-weight:500;color:var(--text-2);transition:color var(--t-micro)}
@@ -79,7 +81,10 @@ svg{display:block}
 /* Dentro do flex em coluna, margin-inline:auto encolheria o miolo ao max-content do h1 e o deslocaria; a borda esquerda tem de ser uma linha só. */
 .hero .miolo{width:100%}
 .hero .rotulo{display:block;margin-bottom:var(--sp-6)}
-.hero .iso{width:40px;height:40px;color:var(--text);margin-bottom:var(--sp-6)}
+.hero .iso{width:40px;height:40px;color:var(--text)}
+.hero .marcas{display:flex;align-items:center;gap:var(--sp-4);margin-bottom:var(--sp-6)}
+.hero .marcas .x{font-size:var(--fs-xl);line-height:1;color:var(--text-3)}
+.hero .marcas img{display:block;height:40px;width:auto}
 .hero h1{font-family:var(--font-display);font-weight:700;font-size:var(--fs-4xl);line-height:.98;letter-spacing:-.02em;text-wrap:balance}
 .hero h1 .sep{color:var(--text-3);font-weight:500}
 .hero h1 .nb{white-space:nowrap}
@@ -94,7 +99,10 @@ svg{display:block}
 .saudacao{font-size:var(--fs-xl)!important;font-weight:600;margin-bottom:var(--sp-5)}
 .fecho .ass{margin-top:var(--sp-6);font-weight:600}
 .fecho .ass span{display:block}
-.fecho .marca{display:block;width:220px;max-width:70%;color:var(--text);margin-top:var(--sp-5)}
+.fecho .marcas{display:flex;align-items:center;flex-wrap:wrap;gap:var(--sp-5);margin-top:var(--sp-6)}
+.fecho .marca{display:block;width:220px;color:var(--text)}
+.fecho .marcas .x{font-size:var(--fs-2xl);line-height:1;color:var(--text-3)}
+.fecho .marcas img{display:block;width:130px;height:auto}
 
 /* ---------- etapa: coluna de número + conteúdo, hairline entre linhas ---------- */
 .etapa{display:grid;grid-template-columns:var(--col-num) 1fr;column-gap:var(--sp-4);padding-block:var(--sp-6);border-top:var(--hairline) solid var(--line)}
@@ -109,7 +117,20 @@ svg{display:block}
 /* panorama: cada linha é um link; só ali há hover */
 .panorama a.etapa{color:inherit;grid-template-columns:var(--col-num) 1fr auto}
 .panorama a.etapa .sub{grid-column:2}
-.panorama a.etapa .seta{grid-column:3;grid-row:1;justify-self:end;align-self:start;font-size:var(--fs-sm);color:var(--text-3);padding-top:.3em;transition:color var(--t-micro),transform var(--t-micro)}
+.panorama a.etapa .lado{grid-column:3;grid-row:1;justify-self:end;display:flex;align-items:flex-start;gap:var(--sp-4);padding-top:.35em}
+.panorama a.etapa .seta{font-size:var(--fs-sm);line-height:1.5;color:var(--text-3);transition:color var(--t-micro),transform var(--t-micro)}
+.panorama .equipe .rotulo{display:block}
+.panorama .equipe .d{margin-top:var(--sp-3);max-width:calc(var(--medida) + 12ch)}
+
+/* quem fez: marcação por nome e função na coluna da direita — sem chip, sem borda, sem fundo */
+.quem{display:block;font-size:var(--fs-xs);font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;line-height:1.5;color:var(--text-3)}
+.panorama a.etapa .quem{text-align:right;max-width:44ch}
+.etapa .sub.com-quem{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--sp-6);align-items:start}
+.etapa .sub.com-quem>h3{grid-column:1}
+.etapa .sub.com-quem>.quem{grid-column:2;grid-row:1;justify-self:end;text-align:right;max-width:44ch;padding-top:.4em}
+.etapa .sub.com-quem>.corpo{grid-column:1/-1}
+.secao-cab .quem{margin-top:var(--sp-4)}
+.corpo.intro{margin-bottom:var(--sp-6)}
 .panorama a.etapa .t{display:inline-block;background-image:linear-gradient(var(--text),var(--text));background-repeat:no-repeat;background-size:0 1px;background-position:0 100%;transition:background-size var(--t-micro)}
 .panorama a.etapa:hover .t{background-size:100% 1px}
 .panorama a.etapa:hover .n{color:var(--lima)}
@@ -130,7 +151,7 @@ svg{display:block}
 /* ---------- tabelas ---------- */
 .tabela{overflow-x:auto;max-width:100%}
 /* A máscara é funcional: sinaliza que há mais coluna à direita; o JS a liga só quando a tabela rola de fato e a desliga no fim da rolagem. */
-.tabela.rola{mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent);-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent)}
+.tabela.rola,.linha-tempo.rola{mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent);-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent)}
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 th{white-space:nowrap;text-align:left;font-size:var(--fs-xs);font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--text-2);padding:0 var(--sp-4) var(--sp-3) 0;border-bottom:var(--hairline) solid var(--line-2);vertical-align:bottom}
 td{padding:var(--sp-3) var(--sp-4) var(--sp-3) 0;border-bottom:var(--hairline) solid var(--line);vertical-align:top;font-size:var(--fs-sm)}
@@ -213,6 +234,7 @@ footer .iso{width:24px;height:24px;color:var(--text);flex:none}
 footer a{color:var(--text-2);border-bottom:var(--hairline) solid var(--line-2);transition:color var(--t-micro),border-color var(--t-micro)}
 footer a:hover{color:var(--text);border-color:var(--text)}
 footer .sep{color:var(--text-3)}
+footer .esquina{display:block;height:24px;width:auto;margin-left:auto}
 /* nome, e-mail e telefone nunca quebram no meio; no celular, um por linha */
 footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap}
 
@@ -273,6 +295,58 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 .acumulado svg .valor{font-size:12px;fill:var(--text-2)}
 .acumulado svg .no.fim{fill:var(--lima)}
 
+/* ---------- o que o público disse: citações separadas por hairline, sem aspas decorativas ---------- */
+.publico blockquote{margin:0;padding-block:var(--sp-6);border-top:var(--hairline) solid var(--line);max-width:calc(var(--medida) + 10ch)}
+.publico .citacoes>blockquote:last-child{border-bottom:var(--hairline) solid var(--line)}
+.publico blockquote p{font-size:var(--fs-lg);line-height:1.5}
+.publico .nota-fonte{margin-top:var(--sp-5);font-size:var(--fs-sm);color:var(--text-2);max-width:var(--medida)}
+
+/* ---------- produção mês a mês (seção gerada): mesmo vocabulário das barras e dos esquemas ---------- */
+.producao .grafico{margin-top:var(--sp-7);max-width:880px}
+.producao .grafico.entregue{max-width:none}
+.producao .grafico>.rotulo{margin-bottom:var(--sp-5)}
+.producao .legenda{margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--text-3);max-width:var(--medida)}
+.producao .corpo+.grafico{margin-top:var(--sp-7)}
+/* três gráficos lado a lado; a linha do contratado é uma hairline tracejada na mesma escala das barras */
+.entregue-grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--sp-6)}
+.entregue-grafico{min-width:0}
+.entregue-grafico .sub-rotulo{display:block;font-size:var(--fs-sm);font-weight:600;margin-bottom:var(--sp-3)}
+.entregue-grade .barras{--pad:var(--sp-6);height:220px;padding-top:var(--pad);padding-right:148px;column-gap:var(--sp-2)}
+.entregue-grade .barra i{max-width:40px}
+.entregue-grade .barra .valor{font-size:var(--fs-sm)}
+/* O elemento cobre exatamente a caixa de conteúdo das barras (abaixo do padding), para o bottom em % bater com a altura das barras. */
+.linha-contrato{position:absolute;left:0;right:0;top:var(--pad);bottom:0;pointer-events:none}
+.linha-contrato::before{content:"";position:absolute;left:0;right:0;bottom:var(--y);border-top:var(--hairline) dashed var(--text-2)}
+.linha-contrato span{position:absolute;right:0;bottom:calc(var(--y) + 4px);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);white-space:nowrap}
+/* linha do tempo: raias em hairline, um ponto por publicação; as raias se desenham ao entrar */
+.linha-tempo svg .lane{stroke:var(--line-2);stroke-width:1}
+.linha-tempo svg .lane-rotulo{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;fill:var(--text-3)}
+.linha-tempo svg .mes-marca{stroke:var(--line);stroke-width:1}
+.linha-tempo svg .mes{font-size:11px;letter-spacing:.14em;text-transform:uppercase;fill:var(--text-3)}
+.linha-tempo svg .pub{fill:var(--text);transform-box:fill-box;transform-origin:center;transition:fill var(--t-micro),transform var(--t-micro)}
+.linha-tempo svg .pub.cobertura{fill:var(--lima)}
+.linha-tempo svg .pub:hover{fill:var(--lima);transform:scale(1.5)}
+.linha-tempo svg .pub.cobertura:hover{fill:var(--text)}
+.js .linha-tempo svg .lane{stroke-dasharray:864;stroke-dashoffset:864;transition:stroke-dashoffset 900ms cubic-bezier(.22,1,.36,1)}
+.js .linha-tempo svg .mes-marca{stroke-dasharray:146;stroke-dashoffset:146;transition:stroke-dashoffset 700ms cubic-bezier(.22,1,.36,1) 300ms}
+.js .linha-tempo svg .pub{opacity:0;transition:opacity 500ms ease-out 600ms,fill var(--t-micro),transform var(--t-micro)}
+.js .linha-tempo.visto svg .lane,.js .linha-tempo.visto svg .mes-marca{stroke-dashoffset:0}
+.js .linha-tempo.visto svg .pub{opacity:1}
+/* quem fez quanto: o número na coluna do número, grande e em lima */
+.quem-fez,.meses{margin-top:var(--sp-7)}
+.quem-fez>.rotulo,.meses>.rotulo{display:block;margin-bottom:var(--sp-5)}
+.quem-fez .pessoa .n{padding-top:0}
+.quem-fez .pessoa .num{font-family:var(--font-display);font-weight:600;font-size:var(--fs-2xl);line-height:1;letter-spacing:-.02em;color:var(--lima);font-variant-numeric:tabular-nums}
+.quem-fez .pessoa .d,.meses .mes-bloco .d{max-width:calc(var(--medida) + 10ch)}
+.meses .mes-bloco .n{font-size:var(--fs-xs);letter-spacing:var(--track-label);text-transform:uppercase;padding-top:.45em}
+.meses .mes-bloco .d.numeros{color:var(--text)}
+.meses .leitura{margin-top:var(--sp-4);font-size:var(--fs-sm);color:var(--text-2);max-width:var(--medida)}
+
+@media (max-width:1280px){
+  .indice ul{gap:var(--sp-3)}
+  .indice nav{gap:var(--sp-5)}
+}
+
 /* ---------- celular ---------- */
 @media (max-width:759px){
   .barras{height:220px;column-gap:6px;padding-top:var(--sp-7)}
@@ -302,6 +376,24 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
   footer .miolo{flex-direction:column;align-items:flex-start;gap:var(--sp-3)}
   footer p{display:flex;flex-direction:column;align-items:flex-start;gap:var(--sp-2)}
   footer .sep{display:none}
+  .panorama a.etapa{grid-template-columns:var(--col-num) 1fr}
+  .panorama a.etapa .lado{grid-column:2;grid-row:auto;justify-self:start;padding-top:0;margin-top:var(--sp-2)}
+  .panorama a.etapa .quem{text-align:left;max-width:none}
+  .etapa .sub.com-quem{display:block}
+  .etapa .sub.com-quem>.quem{text-align:left;max-width:none;padding-top:0;margin-top:var(--sp-2)}
+  .hero .marcas img{height:32px}
+  .hero .iso{width:32px;height:32px}
+  .fecho .marca{width:180px}
+  .fecho .marcas{gap:var(--sp-4)}
+  .fecho .marcas img{width:106px}
+  footer .esquina{margin-left:0}
+  .entregue-grade{grid-template-columns:1fr;row-gap:var(--sp-6)}
+  .entregue-grade .barras{height:200px}
+  /* a linha do tempo rola na horizontal; rótulo e legenda ficam presos à esquerda */
+  .linha-tempo{overflow-x:auto;scrollbar-width:none}
+  .linha-tempo::-webkit-scrollbar{display:none}
+  .linha-tempo svg{min-width:760px}
+  .linha-tempo figcaption,.linha-tempo .legenda{position:sticky;left:0;padding-right:48px}
   .tabela table{min-width:760px}
   .tabela table.quatro{min-width:640px}
   .tabela .metricas{min-width:0}
@@ -324,6 +416,9 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
   .js .esquema svg .traco.desenha{transition:none}
   .js .barra i,.js .fila .par i{transform:none;transition:none}
   .js .barra .valor,.js .mes-linha .dias i{opacity:1;transition:none}
+  .js .linha-tempo svg .lane,.js .linha-tempo svg .mes-marca{stroke-dashoffset:0;transition:none}
+  .js .linha-tempo svg .pub{opacity:1;transition:none}
+  .linha-tempo svg .pub{transition:none}
 }
 </style>
 </head>
@@ -355,15 +450,17 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
 <header class="indice" id="indice">
   <nav aria-label="Índice">
-    <a class="marca" href="#topo" aria-label="MARC\O WELLINGTON — voltar ao topo"><svg viewBox="0 0 868.01 207.07" fill="currentColor" aria-hidden="true"><use href="#lm"/></svg></a>
+    <a class="marca" href="#topo" aria-label="MARC\O WELLINGTON × Esquina Criativa — voltar ao topo"><svg viewBox="0 0 868.01 207.07" fill="currentColor" aria-hidden="true"><use href="#lm"/></svg><span class="x" aria-hidden="true">×</span><img src="img/esquina-papel.png" alt="Esquina Criativa" height="18" width="44"></a>
     <ul>
       <li><a href="#antes-depois">Antes · depois</a></li>
+      <li><a href="#producao">Produção</a></li>
       <li><a href="#secao-01"><span class="n">01</span>Tráfego</a></li>
-      <li><a href="#secao-02"><span class="n">02</span>Bonito</a></li>
-      <li><a href="#secao-03"><span class="n">03</span>UNIGRAN</a></li>
-      <li><a href="#secao-04"><span class="n">04</span>Design</a></li>
+      <li><a href="#secao-02"><span class="n">02</span>Design</a></li>
+      <li><a href="#secao-03"><span class="n">03</span>Planejamento</a></li>
+      <li><a href="#secao-04"><span class="n">04</span>Audiovisual</a></li>
       <li><a href="#secao-05"><span class="n">05</span>Digital</a></li>
       <li><a href="#secao-06"><span class="n">06</span>INPI</a></li>
+      <li><a href="#publico">Público</a></li>
       <li><a href="#fica">O que fica</a></li>
     </ul>
   </nav>
@@ -373,10 +470,10 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
 <section class="hero secao" id="topo">
   <div class="miolo grupo">
-    <span class="rotulo reveal">MARC\O WELLINGTON para Forrodiando</span>
-    <svg class="iso reveal" viewBox="0 0 245.51 245.48" fill="currentColor" aria-hidden="true"><use href="#iso"/></svg>
+    <span class="rotulo reveal">MARC\O WELLINGTON × Esquina Criativa para Forrodiando</span>
+    <div class="marcas reveal" role="img" aria-label="MARC\O WELLINGTON e Esquina Criativa"><svg class="iso" viewBox="0 0 245.51 245.48" fill="currentColor" aria-hidden="true"><use href="#iso"/></svg><span class="x" aria-hidden="true">×</span><img src="img/esquina-papel.png" alt="" height="40" width="98"></div>
     <h1 class="reveal">Entrega <span class="nb"><span class="sep">·</span> Forrodiando</span></h1>
-    <p class="linha reveal">Relação do que foi executado para a banda e dos ativos que ficam com ela.</p>
+    <p class="linha reveal">Relação do que foi executado para a banda, por quem, e dos ativos que ficam com ela.</p>
     <div class="rolar reveal" aria-hidden="true"><span>rolar</span><i></i></div>
   </div>
 </section>
@@ -384,9 +481,10 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 <section class="abertura secao" id="abertura">
   <div class="miolo grupo">
     <p class="saudacao reveal">Olá, Forrodiando.</p>
-    <p class="reveal">O ponto de partida era uma conta de anúncios sem histórico, um pixel que nunca havia registrado um evento e uma venda de ingressos sem anúncio, a chamada venda orgânica, com ritmo quase nulo. Diante disso, o trabalho começou pela base: antes de qualquer anúncio, era preciso que a conta veiculasse, que o pixel coletasse e que a marca passasse a ter dados próprios.</p>
-    <p class="reveal">Esta página reúne o que foi executado em seis frentes: tráfego pago e dados, dois trabalhos de audiovisual, design, infraestrutura digital e propriedade intelectual. Na frente de tráfego, o que foi construído aparece separado do que foi medido, porque infraestrutura e resultado de mídia são coisas distintas e a separação protege a leitura. Os IDs de conta, pixel, públicos, campanha e conjuntos estão registrados em cada item e podem ser conferidos nas plataformas a qualquer momento. Antes das frentes, a seção “Antes e depois da Esquina Criativa” mostra, com os dados exportados do Meta, o que mudou na presença digital da banda a partir de abril.</p>
-    <p class="reveal">Ao fim, a seção “O que fica com a banda” lista o que permanece sob o nome da Forrodiando. Recomendo atenção especial a essa parte, pois é nela que estão os acessos e as responsabilidades que seguem adiante.</p>
+    <p class="reveal">O ponto de partida era uma conta de anúncios sem histórico, um pixel que nunca havia registrado um evento e uma presença digital parada: entre janeiro e março, 60% dos dias não tiveram movimento no Instagram da banda, e a venda de ingressos sem anúncio, a chamada venda orgânica, seguia em ritmo quase nulo. Diante disso, o trabalho começou pela base, antes de qualquer anúncio.</p>
+    <p class="reveal">Em abril, a Esquina Criativa, agência formada na UNIGRAN, assumiu a presença digital da banda: identidade visual nova, um planejamento por mês, artes, vídeos e coberturas de shows. Em paralelo, foram construídos a infraestrutura de tráfego e dados e o domínio, e feito o levantamento para o registro da marca; essa parte aparece aqui sob o nome de Marcio Wellington, integrante da agência.</p>
+    <p class="reveal">Esta página reúne o que foi executado em seis frentes e registra, em cada item, quem o fez. Antes das frentes, duas seções de números: “Antes e depois da Esquina Criativa”, com os dados exportados do Meta, e “Produção mês a mês”, com o que a equipe produziu de abril a setembro segundo o próprio relatório. Na frente de tráfego, o que foi construído aparece separado do que foi medido, porque infraestrutura e resultado de mídia são coisas distintas e a separação protege a leitura. Os IDs de conta, pixel, públicos, campanha e conjuntos estão registrados em cada item e podem ser conferidos nas plataformas a qualquer momento.</p>
+    <p class="reveal">Ao fim, a seção “O que o público disse” traz respostas ao formulário da ativação na UNIGRAN, e “O que fica com a banda” lista o que permanece sob o nome da Forrodiando. Recomendo atenção especial a essa última parte, pois é nela que estão os acessos, o acervo e as responsabilidades que seguem adiante.</p>
   </div>
 </section>
 
@@ -394,12 +492,13 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
   <div class="miolo">
     <div class="secao-cab reveal"><span class="rotulo">Panorama</span></div>
     <div class="grupo">
-      <a class="etapa reveal" href="#secao-01"><span class="n">01</span><span class="sub"><span class="t">Tráfego pago e dados</span><span class="d">Conta validada, pixel em coleta, públicos, campanha, criativos e resultados medidos</span></span><span class="seta" aria-hidden="true">→</span></a>
-      <a class="etapa reveal" href="#secao-02"><span class="n">02</span><span class="sub"><span class="t">Audiovisual · Bonito</span><span class="d">Drone, fotografia, tratamento de imagens e vídeo do Festival de Inverno</span></span><span class="seta" aria-hidden="true">→</span></a>
-      <a class="etapa reveal" href="#secao-03"><span class="n">03</span><span class="sub"><span class="t">Audiovisual · UNIGRAN</span><span class="d">Captação aérea com drone na ativação da banda na UNIGRAN</span></span><span class="seta" aria-hidden="true">→</span></a>
-      <a class="etapa reveal" href="#secao-04"><span class="n">04</span><span class="sub"><span class="t">Design e conteúdo</span><span class="d">Edição para redes sociais e capa da música “TEU PAR” no Spotify</span></span><span class="seta" aria-hidden="true">→</span></a>
-      <a class="etapa reveal" href="#secao-05"><span class="n">05</span><span class="sub"><span class="t">Infraestrutura digital</span><span class="d">Domínio adquirido e configurado; site de portfólio e agenda em andamento</span></span><span class="seta" aria-hidden="true">→</span></a>
-      <a class="etapa reveal" href="#secao-06"><span class="n">06</span><span class="sub"><span class="t">Propriedade intelectual</span><span class="d">Levantamento de custos, classes e procedimento para registro da marca no INPI</span></span><span class="seta" aria-hidden="true">→</span></a>
+      <a class="etapa reveal" href="#secao-01"><span class="n">01</span><span class="sub"><span class="t">Tráfego pago e dados</span><span class="d">Conta validada, pixel em coleta, públicos, campanha, criativos e resultados medidos</span></span><span class="lado"><span class="quem">Marcio Wellington</span><span class="seta" aria-hidden="true">→</span></span></a>
+      <a class="etapa reveal" href="#secao-02"><span class="n">02</span><span class="sub"><span class="t">Identidade visual, design e conteúdo</span><span class="d">Identidade visual nova, artes, carrosséis, lançamento de Fulorô, impressos e capa de streaming</span></span><span class="lado"><span class="quem">Mariana · Kaléu · Marcio Wellington</span><span class="seta" aria-hidden="true">→</span></span></a>
+      <a class="etapa reveal" href="#secao-03"><span class="n">03</span><span class="sub"><span class="t">Planejamento e calendário</span><span class="d">Seis planejamentos mensais, conceito de cada mês e 66 publicações calendarizadas</span></span><span class="lado"><span class="quem">Sarah Campos</span><span class="seta" aria-hidden="true">→</span></span></a>
+      <a class="etapa reveal" href="#secao-04"><span class="n">04</span><span class="sub"><span class="t">Audiovisual</span><span class="d">Reels, 13 coberturas de shows, drone e fotografia em Bonito, drone na UNIGRAN</span></span><span class="lado"><span class="quem">Ana Beatriz · Marcio Wellington</span><span class="seta" aria-hidden="true">→</span></span></a>
+      <a class="etapa reveal" href="#secao-05"><span class="n">05</span><span class="sub"><span class="t">Infraestrutura digital</span><span class="d">Domínio adquirido e configurado; site de portfólio e agenda em andamento</span></span><span class="lado"><span class="quem">Marcio Wellington</span><span class="seta" aria-hidden="true">→</span></span></a>
+      <a class="etapa reveal" href="#secao-06"><span class="n">06</span><span class="sub"><span class="t">Propriedade intelectual</span><span class="d">Levantamento de custos, classes e procedimento para registro da marca no INPI</span></span><span class="lado"><span class="quem">Marcio Wellington</span><span class="seta" aria-hidden="true">→</span></span></a>
+      <div class="etapa equipe reveal"><span class="n" aria-hidden="true"></span><div class="sub"><span class="rotulo">Equipe</span><p class="d">Mariana · direção de arte e identidade visual; Sarah Campos · planejamento; Ana Beatriz · vídeo e coberturas; Kaléu · artes e impressos; Marcio Wellington · tráfego, dados, audiovisual e infraestrutura digital</p></div></div>
     </div>
   </div>
 </section>
@@ -537,14 +636,253 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 </section>
 <!-- antes-depois:fim -->
 
+<!-- producao:inicio -->
+<!-- gerado por dados/gera-producao.mjs a partir de dados/producao-esquina.json; não editar à mão -->
+<section class="secao producao" id="producao" data-slug="producao">
+  <div class="miolo">
+    <div class="secao-cab reveal"><span class="rotulo">Esquina Criativa</span><h2 class="titulo">Produção mês a mês</h2></div>
+    <div class="corpo grupo">
+      <p class="reveal">Entre abril e setembro de 2026, a equipe da Esquina Criativa produziu 61 artes e carrosséis, 21 vídeos para reels, 13 coberturas de shows e 3 peças impressas, distribuídos em 66 publicações calendarizadas. O pacote mensal previa 6 artes, 2 reels e 2 coberturas; em todos os seis meses o relatório da equipe registra produção além do pacote. Os números abaixo saem desse relatório.</p>
+    </div>
+
+    <figure class="esquema grafico entregue">
+      <figcaption class="rotulo">Contratado e entregue, por mês</figcaption>
+      <div class="entregue-grade">
+      <div class="entregue-grafico">
+        <span class="sub-rotulo">Artes e carrosséis por mês</span>
+        <div class="barras" style="--n:6" role="img" aria-label="Artes e carrosséis por mês: abr 14, mai 7, jun 8, jul 6, ago 13, set 13; contratado 6 por mês">
+          <div class="barra depois" style="--h:100.0%;--i:0"><span class="valor">14</span><i></i><span class="mes">abr</span></div>
+          <div class="barra depois" style="--h:50.0%;--i:1"><span class="valor">7</span><i></i><span class="mes">mai</span></div>
+          <div class="barra depois" style="--h:57.1%;--i:2"><span class="valor">8</span><i></i><span class="mes">jun</span></div>
+          <div class="barra depois" style="--h:42.9%;--i:3"><span class="valor">6</span><i></i><span class="mes">jul</span></div>
+          <div class="barra depois" style="--h:92.9%;--i:4"><span class="valor">13</span><i></i><span class="mes">ago</span></div>
+          <div class="barra depois" style="--h:92.9%;--i:5"><span class="valor">13</span><i></i><span class="mes">set</span></div>
+          <div class="linha-contrato" style="--y:42.9%" aria-hidden="true"><span>contratado: 6/mês</span></div>
+        </div>
+      </div>
+      <div class="entregue-grafico">
+        <span class="sub-rotulo">Reels por mês</span>
+        <div class="barras" style="--n:6" role="img" aria-label="Reels por mês: abr 3, mai 3, jun 3, jul 3, ago 2, set 7; contratado 2 por mês">
+          <div class="barra depois" style="--h:42.9%;--i:0"><span class="valor">3</span><i></i><span class="mes">abr</span></div>
+          <div class="barra depois" style="--h:42.9%;--i:1"><span class="valor">3</span><i></i><span class="mes">mai</span></div>
+          <div class="barra depois" style="--h:42.9%;--i:2"><span class="valor">3</span><i></i><span class="mes">jun</span></div>
+          <div class="barra depois" style="--h:42.9%;--i:3"><span class="valor">3</span><i></i><span class="mes">jul</span></div>
+          <div class="barra depois" style="--h:28.6%;--i:4"><span class="valor">2</span><i></i><span class="mes">ago</span></div>
+          <div class="barra depois" style="--h:100.0%;--i:5"><span class="valor">7</span><i></i><span class="mes">set</span></div>
+          <div class="linha-contrato" style="--y:28.6%" aria-hidden="true"><span>contratado: 2/mês</span></div>
+        </div>
+      </div>
+      <div class="entregue-grafico">
+        <span class="sub-rotulo">Coberturas de shows por mês</span>
+        <div class="barras" style="--n:6" role="img" aria-label="Coberturas de shows por mês: abr 2, mai 3, jun 3, jul 2, ago 2, set 1; contratado 2 por mês">
+          <div class="barra depois" style="--h:66.7%;--i:0"><span class="valor">2</span><i></i><span class="mes">abr</span></div>
+          <div class="barra depois" style="--h:100.0%;--i:1"><span class="valor">3</span><i></i><span class="mes">mai</span></div>
+          <div class="barra depois" style="--h:100.0%;--i:2"><span class="valor">3</span><i></i><span class="mes">jun</span></div>
+          <div class="barra depois" style="--h:66.7%;--i:3"><span class="valor">2</span><i></i><span class="mes">jul</span></div>
+          <div class="barra depois" style="--h:66.7%;--i:4"><span class="valor">2</span><i></i><span class="mes">ago</span></div>
+          <div class="barra" style="--h:33.3%;--i:5"><span class="valor">1</span><i></i><span class="mes">set</span></div>
+          <div class="linha-contrato" style="--y:66.7%" aria-hidden="true"><span>contratado: 2/mês</span></div>
+        </div>
+      </div>
+      </div>
+      <p class="legenda">Barra em lima: mês em que a entrega alcançou ou passou o contratado. Coberturas contadas pelo calendário de publicações (reels e fotos de cobertura).</p>
+    </figure>
+
+    <figure class="esquema grafico linha-tempo">
+      <figcaption class="rotulo">66 publicações, de abril a setembro</figcaption>
+      <svg viewBox="0 0 880 182" role="img" aria-label="66 publicações de abril a setembro, por tipo: Reels 20, Artes 34, Carrosséis 9, Fotos 3">
+        <line class="lane" x1="8" y1="33.0" x2="872" y2="33.0"/>
+        <text class="lane-rotulo" x="8" y="24.0">Reels · 20</text>
+        <line class="lane" x1="8" y1="67.0" x2="872" y2="67.0"/>
+        <text class="lane-rotulo" x="8" y="58.0">Artes · 34</text>
+        <line class="lane" x1="8" y1="101.0" x2="872" y2="101.0"/>
+        <text class="lane-rotulo" x="8" y="92.0">Carrosséis · 9</text>
+        <line class="lane" x1="8" y1="135.0" x2="872" y2="135.0"/>
+        <text class="lane-rotulo" x="8" y="126.0">Fotos · 3</text>
+        <line class="mes-marca" x1="8.0" y1="10" x2="8.0" y2="156"/>
+        <text class="mes" x="14.0" y="172">abr</text>
+        <line class="mes-marca" x1="150.4" y1="10" x2="150.4" y2="156"/>
+        <text class="mes" x="156.4" y="172">mai</text>
+        <line class="mes-marca" x1="297.6" y1="10" x2="297.6" y2="156"/>
+        <text class="mes" x="303.6" y="172">jun</text>
+        <line class="mes-marca" x1="440.0" y1="10" x2="440.0" y2="156"/>
+        <text class="mes" x="446.0" y="172">jul</text>
+        <line class="mes-marca" x1="587.2" y1="10" x2="587.2" y2="156"/>
+        <text class="mes" x="593.2" y="172">ago</text>
+        <line class="mes-marca" x1="734.3" y1="10" x2="734.3" y2="156"/>
+        <text class="mes" x="740.3" y="172">set</text>
+        <circle class="pub" cx="8.0" cy="101.0" r="5"><title>01/04/2026 · Carrossel (1) · Nova identidade</title></circle>
+        <circle class="pub" cx="8.0" cy="67.0" r="5"><title>01/04/2026 · Arte estática (1) e Story animado (1) · Divulgação Noca DIA 20</title></circle>
+        <circle class="pub" cx="8.0" cy="67.0" r="5"><title>01/04/2026 · Story estático (2) e Story animado (5) · (Lotes e variações de preços) Divulgação Noca DIA 20</title></circle>
+        <circle class="pub" cx="12.7" cy="67.0" r="5"><title>02/04/2026 · Arte estática (1) · Agenda Abril</title></circle>
+        <circle class="pub" cx="31.7" cy="33.0" r="5"><title>06/04/2026 · Reels · Ensaio Fotográfico</title></circle>
+        <circle class="pub" cx="36.5" cy="67.0" r="5"><title>07/04/2026 · Arte estática (1) e Story Animado (1) · DATA EXTRA NOCA</title></circle>
+        <circle class="pub cobertura" cx="112.4" cy="33.0" r="5"><title>23/04/2026 · Reels - Cobertura · Dona Olinda</title></circle>
+        <circle class="pub" cx="112.4" cy="67.0" r="5"><title>23/04/2026 · Arte estática (1) e Story Animado (1) · DATA EXTRA NOCA</title></circle>
+        <circle class="pub" cx="136.2" cy="67.0" r="5"><title>28/04/2026 · Story Animado · Dia do trabalhador</title></circle>
+        <circle class="pub cobertura" cx="145.7" cy="33.0" r="5"><title>30/04/2026 · Reels - Cobertura · Noca</title></circle>
+        <circle class="pub cobertura" cx="150.4" cy="135.0" r="5"><title>01/05/2026 · Fotos - Cobertura · Forró do Trabalhador Noca</title></circle>
+        <circle class="pub cobertura" cx="164.7" cy="33.0" r="5"><title>04/05/2026 · Reels - Cobertura · Forró do Trabalhador</title></circle>
+        <circle class="pub" cx="164.7" cy="67.0" r="5"><title>04/05/2026 · Arte animada · + 3 Arte animada (Lotes) Forró de Esquina</title></circle>
+        <circle class="pub" cx="169.4" cy="33.0" r="5"><title>05/05/2026 · Reels · Divulgação 1º Forró de Esquina</title></circle>
+        <circle class="pub" cx="164.7" cy="67.0" r="5"><title>04/05/2026 · Capa - Música Nova · FULORÔ</title></circle>
+        <circle class="pub" cx="183.6" cy="67.0" r="5"><title>08/05/2026 · POST · Forró de esquina - Aula de forró</title></circle>
+        <circle class="pub" cx="197.9" cy="67.0" r="5"><title>11/05/2026 · Arte animada · Quintas no Noca - Dia 14/05 e 21/05</title></circle>
+        <circle class="pub" cx="212.1" cy="67.0" r="5"><title>14/05/2026 · Arte estática · Esse evento tem o apoio da “A Musical”</title></circle>
+        <circle class="pub cobertura" cx="231.1" cy="135.0" r="5"><title>18/05/2026 · Fotos - Cobertura · Forró de Esquina</title></circle>
+        <circle class="pub" cx="269.1" cy="67.0" r="5"><title>26/05/2026 · Arte animada · 06/06 FULORÔ pré-save</title></circle>
+        <circle class="pub" cx="283.3" cy="33.0" r="5"><title>29/05/2026 · Reels · Divulgação Fulorô</title></circle>
+        <circle class="pub" cx="311.8" cy="101.0" r="5"><title>04/06/2026 · Carrossel · História Fulorô 06/06</title></circle>
+        <circle class="pub" cx="321.3" cy="67.0" r="5"><title>06/06/2026 · Arte Animada (Story) · Lançamento Fulorô</title></circle>
+        <circle class="pub" cx="340.3" cy="67.0" r="5"><title>10/06/2026 · Arte estática · Agenda Junho</title></circle>
+        <circle class="pub" cx="345.1" cy="67.0" r="5"><title>11/06/2026 · Arte estática · Quintas Noca (3 datas)</title></circle>
+        <circle class="pub cobertura" cx="383.0" cy="33.0" r="5"><title>19/06/2026 · Reels - Cobertura · Arraiá do Vem de Feira</title></circle>
+        <circle class="pub" cx="402.0" cy="101.0" r="5"><title>23/06/2026 · Carrossel · Fotos + música nova</title></circle>
+        <circle class="pub cobertura" cx="411.5" cy="33.0" r="5"><title>25/06/2026 · Reels - Cobertura · Batuque - Festa Junina</title></circle>
+        <circle class="pub" cx="411.5" cy="67.0" r="5"><title>25/06/2026 · Arte estática (Story) · É HOJE - Quintas Noca - 25/06</title></circle>
+        <circle class="pub" cx="416.3" cy="67.0" r="5"><title>26/06/2026 · Arte estática (Story) · É HOJE - CAARAPÓ</title></circle>
+        <circle class="pub" cx="421.0" cy="67.0" r="5"><title>27/06/2026 · Arte estática (Story) · É HOJE - Arraia UFGD</title></circle>
+        <circle class="pub cobertura" cx="430.5" cy="33.0" r="5"><title>29/06/2026 · Reels - Cobertura · Arraiá da Gedê</title></circle>
+        <circle class="pub" cx="444.7" cy="101.0" r="5"><title>02/07/2026 · Carrossel · Dump dos shows de junho</title></circle>
+        <circle class="pub" cx="449.5" cy="67.0" r="5"><title>03/07/2026 · Arte estática · Agenda Julho</title></circle>
+        <circle class="pub" cx="473.2" cy="67.0" r="5"><title>08/07/2026 · Arte estática · Quintas Noca</title></circle>
+        <circle class="pub" cx="478.0" cy="67.0" r="5"><title>09/07/2026 · Arte estática (Story) · É hoje - Quintas Noca</title></circle>
+        <circle class="pub cobertura" cx="506.5" cy="33.0" r="5"><title>15/07/2026 · Reels - Cobertura · Arraiá dos Ipês</title></circle>
+        <circle class="pub" cx="511.2" cy="67.0" r="5"><title>16/07/2026 · Arte estática (Story) · É hoje - Quintas Noca</title></circle>
+        <circle class="pub" cx="530.2" cy="67.0" r="5"><title>20/07/2026 · Arte estática · Novas datas show</title></circle>
+        <circle class="pub" cx="534.9" cy="33.0" r="5"><title>21/07/2026 · Reels - Trend · Trend adaptada para divulgar Fulorô</title></circle>
+        <circle class="pub cobertura" cx="577.7" cy="33.0" r="5"><title>30/07/2026 · Reels - Cobertura · TBT - Arraiá do Indaiá</title></circle>
+        <circle class="pub" cx="606.2" cy="67.0" r="5"><title>05/08/2026 · 2 Arte estática (Post e Story) · Agenda shows agosto</title></circle>
+        <circle class="pub" cx="610.9" cy="67.0" r="5"><title>06/08/2026 · 2 Arte estática (Post e Story) · Forró de Esquina</title></circle>
+        <circle class="pub" cx="634.6" cy="67.0" r="5"><title>11/08/2026 · 2 Arte estática (Post e Story) · Evento adiado - Forró de Esquina</title></circle>
+        <circle class="pub" cx="644.1" cy="67.0" r="5"><title>13/08/2026 · Arte estática (Story) · Quintas Noca + convidado</title></circle>
+        <circle class="pub" cx="648.9" cy="101.0" r="5"><title>14/08/2026 · Carrossel e Arte estática (Story) · Divulgando a comunidade do WhatsApp</title></circle>
+        <circle class="pub" cx="663.1" cy="67.0" r="5"><title>17/08/2026 · 2 Arte estática (Post e Story) · Festival de Inverno Bonito</title></circle>
+        <circle class="pub" cx="696.4" cy="33.0" r="5"><title>24/08/2026 · Reels · Divulgação 2º Forró de Esquina</title></circle>
+        <circle class="pub" cx="705.8" cy="101.0" r="5"><title>26/08/2026 · Carrossel · Indicações de músicas</title></circle>
+        <circle class="pub" cx="710.6" cy="101.0" r="5"><title>27/08/2026 · Carrossel · Trend - Acho chique quem</title></circle>
+        <circle class="pub cobertura" cx="724.8" cy="135.0" r="5"><title>30/08/2026 · Fotos - Cobertura · Carrossel de fotos do FIB</title></circle>
+        <circle class="pub cobertura" cx="729.6" cy="33.0" r="5"><title>31/08/2026 · Reels - Cobertura · 2ª Forró de Esquina (POV)</title></circle>
+        <circle class="pub" cx="739.1" cy="33.0" r="5"><title>02/09/2026 · Reels - Trend · Barulho de cada instrumento</title></circle>
+        <circle class="pub" cx="743.8" cy="33.0" r="5"><title>03/09/2026 · Reels · Víde geral do FIB 2026</title></circle>
+        <circle class="pub" cx="748.6" cy="67.0" r="5"><title>04/09/2026 · 3 Arte estática (Post, Story e Banner Site) · Post oficial 7 anos</title></circle>
+        <circle class="pub" cx="762.8" cy="67.0" r="5"><title>07/09/2026 · 3 Arte estática (Post, Story e Banner Site) · Two Sessions - 13/09</title></circle>
+        <circle class="pub" cx="767.6" cy="33.0" r="5"><title>08/09/2026 · Reels · Especial 7 anos de Forrodiando</title></circle>
+        <circle class="pub" cx="791.3" cy="33.0" r="5"><title>13/09/2026 · Reels · Divulgação Twoco</title></circle>
+        <circle class="pub cobertura" cx="796.0" cy="101.0" r="5"><title>14/09/2026 · Carrossel - Cobertura · Carrossel de vídeo de momentos na Twoco</title></circle>
+        <circle class="pub" cx="800.8" cy="67.0" r="5"><title>15/09/2026 · 2 Arte estática (Post e Story) · Noca 17/09 - 7 anos</title></circle>
+        <circle class="pub" cx="800.8" cy="33.0" r="5"><title>15/09/2026 · Reels · Chamada dia 20 no Vibes</title></circle>
+        <circle class="pub" cx="805.5" cy="33.0" r="5"><title>16/09/2026 · Reels · “Tempo” dia 20 no Vibes</title></circle>
+        <circle class="pub" cx="805.5" cy="101.0" r="5"><title>16/09/2026 · Carrossel · Informativo + Vibes</title></circle>
+        <circle class="pub" cx="810.3" cy="67.0" r="5"><title>17/09/2026 · 2 Arte estática (Post e Story) · Dona Olinda 19/09 - 7 anos</title></circle>
+        <circle class="pub" cx="810.3" cy="67.0" r="5"><title>17/09/2026 · 1 Arte estática ( Story) · Aviso sorteio Noca</title></circle>
+        <circle class="pub" cx="810.3" cy="67.0" r="5"><title>17/09/2026 · 1 Arte estática ( Story) · Notícia Forrodiando</title></circle>
+      </svg>
+      <p class="legenda">Um ponto por publicação do calendário da equipe; ponto em lima é cobertura de show. Passe o cursor para ver a data, o formato e a chamada.</p>
+    </figure>
+
+    <div class="quem-fez">
+      <span class="rotulo reveal">Quem fez quanto</span>
+      <div class="grupo">
+      <div class="etapa reveal pessoa">
+        <span class="n"><span class="num">68</span></span>
+        <div class="sub"><span class="t">Mariana</span><span class="d">direção de arte e identidade visual · identidade visual completa · 44 artes e 8 carrosséis, incluindo o lançamento de Fulorô · 12 artes e 3 impressos com Kaléu</span></div>
+      </div>
+      <div class="etapa reveal pessoa">
+        <span class="n"><span class="num">6</span></span>
+        <div class="sub"><span class="t">Sarah Campos</span><span class="d">planejamento · 6 planejamentos mensais · 66 publicações calendarizadas · entrevistas nos vídeos</span></div>
+      </div>
+      <div class="etapa reveal pessoa">
+        <span class="n"><span class="num">21</span></span>
+        <div class="sub"><span class="t">Ana Beatriz</span><span class="d">vídeo e coberturas · 21 vídeos para reels · 13 coberturas de shows, em vídeo e foto</span></div>
+      </div>
+      <div class="etapa reveal pessoa">
+        <span class="n"><span class="num">15</span></span>
+        <div class="sub"><span class="t">Kaléu</span><span class="d">artes e impressos · 12 artes estáticas e 3 impressos, com Mariana, em setembro</span></div>
+      </div>
+      </div>
+      <p class="legenda">A atribuição segue a coluna &quot;responsável&quot; do relatório; o lançamento de Fulorô (maio) não tem responsável indicado e foi atribuído à Mariana, que assina as demais artes do período.</p>
+    </div>
+
+    <div class="meses">
+      <span class="rotulo reveal">Mês a mês</span>
+      <div class="grupo">
+      <div class="etapa reveal mes-bloco">
+        <span class="n">abr</span>
+        <div class="sub">
+          <span class="t">Nova era do Forrodiando</span>
+          <span class="d numeros">14 artes e carrosséis · 3 reels · 2 coberturas · 10 publicações</span>
+          <span class="d">Coberturas: Dona Olinda · Noca.</span>
+          <span class="d">Além do pacote: reels do ensaio fotográfico.</span>
+          <p class="leitura">Foram executadas a identidade visual nova e a reformulação do Instagram, anunciadas no feed em 1º de abril; a partir daí, a divulgação das datas de show adotou uma linha estética mais descontraída. Em vídeo, o mês abriu com o reels do ensaio fotográfico e teve duas coberturas; o vídeo de cobertura no Noca registrou 7.226 visualizações, e a equipe anotou que o vídeo de momentos do evento rende visualizações.</p>
+        </div>
+      </div>
+      <div class="etapa reveal mes-bloco">
+        <span class="n">mai</span>
+        <div class="sub">
+          <span class="t">Forrodiando no Noca e pré-divulgação da música nova</span>
+          <span class="d numeros">7 artes e carrosséis · 3 reels · 3 coberturas · 11 publicações</span>
+          <span class="d">Coberturas: Forró do Trabalhador Noca · Forró do Trabalhador · Forró de Esquina.</span>
+          <span class="d">Além do pacote: reels da divulgação da música Fulorô e o carrossel de fotos das coberturas.</span>
+          <p class="leitura">Foram feitas duas coberturas de show — o Forró do Trabalhador, em foto e em vídeo, e o Forró de Esquina, em foto —, a divulgação da 1ª edição do Forró de Esquina, com participação do Fulô e patrocínios, e, no fim do mês, o início da divulgação de Fulorô, com pré-save, carrossel com a história e o lançamento nas plataformas. Entrou o primeiro vídeo de interação, com Sarah Campos entrevistando o público do forró e integrantes da banda; a equipe observou que o carrossel de fotos dos forrós engaja.</p>
+        </div>
+      </div>
+      <div class="etapa reveal mes-bloco">
+        <span class="n">jun</span>
+        <div class="sub">
+          <span class="t">Junho</span>
+          <span class="d numeros">8 artes e carrosséis · 3 reels · 3 coberturas · 11 publicações</span>
+          <span class="d">Coberturas: Arraiá do Vem de Feira · Batuque - Festa Junina · Arraiá da Gedê.</span>
+          <span class="d">Além do pacote: reels/cobertura do Arraiá da Gedê.</span>
+          <p class="leitura">Foram feitas três coberturas de arraiás e festa junina, e a comunicação do mês, com vários shows marcados e as Quintas no Noca, usou cores marcantes. A equipe observou que o vídeo só de cobertura já não engajava como antes e passou a explorar a interação de integrantes com o público; o vídeo com fala da Erika teve bom resultado.</p>
+        </div>
+      </div>
+      <div class="etapa reveal mes-bloco">
+        <span class="n">jul</span>
+        <div class="sub">
+          <span class="t">Julho</span>
+          <span class="d numeros">6 artes e carrosséis · 3 reels · 2 coberturas · 9 publicações</span>
+          <span class="d">Coberturas: Arraiá dos Ipês · TBT - Arraiá do Indaiá.</span>
+          <span class="d">Além do pacote: reels TBT do Indaiá.</span>
+          <p class="leitura">Foram feitas duas coberturas de arraiás, com vídeos elaborados mas sem fala de integrante, e uma trend adaptada para divulgar Fulorô mais uma vez. O engajamento ficou abaixo do de junho, o que a equipe leu como confirmação de que o público prefere a interação da banda. O relatório não registra contexto criativo para o mês.</p>
+        </div>
+      </div>
+      <div class="etapa reveal mes-bloco">
+        <span class="n">ago</span>
+        <div class="sub">
+          <span class="t">FIB 2026 — Story real time + cobertura</span>
+          <span class="d numeros">13 artes e carrosséis · 2 reels · 2 coberturas · 11 publicações</span>
+          <span class="d">Coberturas: FIB · 2ª Forró de Esquina (POV).</span>
+          <span class="d">Além do pacote: reels de divulgação do Forró de Esquina.</span>
+          <p class="leitura">Foi feita a divulgação do 2º Forró de Esquina com chamada de Victor na abertura do vídeo, e o engajamento voltou ao patamar dos vídeos com fala. Houve cobertura do Festival de Inverno de Bonito com story em tempo real e cobertura do Forró de Esquina em vídeo no formato POV.</p>
+        </div>
+      </div>
+      <div class="etapa reveal mes-bloco">
+        <span class="n">set</span>
+        <div class="sub">
+          <span class="t">13/09 TWOCO — Story real time + cobertura</span>
+          <span class="d numeros">13 artes e carrosséis · 7 reels · 1 cobertura · 14 publicações · 3 impressos</span>
+          <span class="d">Coberturas: Twoco.</span>
+          <span class="d">Além do pacote: até o momento divulgação Twoco e criativos para tráfego.</span>
+          <span class="d">Criativos para a campanha paga (frente 01): Criativo vídeo chamada dia 20 no Vibes · Criativo vídeo gatilho “Tempo” dia 20 no Vibes · Criativo arte.</span>
+          <p class="leitura">Mês em andamento no fechamento do relatório. Abriu com uma trend de humor, que gerou interação dos seguidores; seguiram o vídeo geral do FIB 2026 e o depoimento de 7 anos da banda. A produção passou a testar formatos de vídeo para os 7 anos, medindo o que rende no orgânico e no pago.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- producao:fim -->
+
 <section class="secao" id="secao-01" data-slug="trafego">
   <div class="miolo">
     <div class="secao-cab reveal"><span class="rotulo">Frente 01</span><h2 class="titulo">Tráfego pago e infraestrutura de dados</h2></div>
 
     <div class="etapa reveal">
       <span class="n">1.1</span>
-      <div class="sub">
+      <div class="sub com-quem">
         <h3>Conta de anúncios</h3>
+        <span class="quem">Marcio Wellington · tráfego e dados</span>
         <div class="corpo">
           <p>Conta “Forrodiando Eventos” (ID 1613324519741494), moeda BRL (real brasileiro), fuso horário local.</p>
           <p><strong>Estado encontrado.</strong> Conta sem histórico algum. Nenhuma campanha havia sido veiculada desde a criação.</p>
@@ -562,8 +900,9 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
     <div class="etapa reveal">
       <span class="n">1.2</span>
-      <div class="sub">
+      <div class="sub com-quem">
         <h3>Rastreamento (pixel)</h3>
+        <span class="quem">Marcio Wellington · tráfego e dados</span>
         <div class="corpo">
           <p>Dataset “Pixel Eventos Forrodiando” (ID 1503472321452420), criado em abril de 2026. O dataset, também chamado de pixel, é o registro que informa ao Meta o que cada visitante fez na página de ingresso.</p>
           <p><strong>Estado encontrado.</strong> O pixel nunca havia disparado um único evento, nem via navegador, nem via servidor. Existia no Business Manager, mas não coletava nada. A operação era cega.</p>
@@ -608,8 +947,9 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
     <div class="etapa reveal">
       <span class="n">1.3</span>
-      <div class="sub">
+      <div class="sub com-quem">
         <h3>Públicos personalizados</h3>
+        <span class="quem">Marcio Wellington · tráfego e dados</span>
         <div class="corpo">
           <p>Público personalizado é uma lista que o Meta monta a partir do comportamento registrado, e que a campanha pode alcançar ou excluir.</p>
           <div class="tabela">
@@ -628,8 +968,9 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
     <div class="etapa reveal">
       <span class="n">1.4</span>
-      <div class="sub">
+      <div class="sub com-quem">
         <h3>Arquitetura de campanha</h3>
+        <span class="quem">Marcio Wellington · tráfego e dados</span>
         <div class="corpo">
           <p>Campanha “FD_7ANOS_VIBES_20SET” (ID 120249053618230650).</p>
 
@@ -695,8 +1036,9 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
     <div class="etapa reveal">
       <span class="n">1.5</span>
-      <div class="sub">
+      <div class="sub com-quem">
         <h3>Criativos</h3>
+        <span class="quem">Marcio Wellington · tráfego e dados;<br>Ana Beatriz · vídeo;<br>Mariana · arte;<br>Kaléu · arte</span>
         <div class="corpo">
           <p>Foram construídos 7 anúncios sobre 4 criativos distintos.</p>
           <ul class="lista">
@@ -706,14 +1048,16 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
             <li>Advantage+ Criativo habilitado para adaptação automática aos posicionamentos verticais.</li>
           </ul>
           <p><strong>Parametrização de UTM por ângulo criativo.</strong> UTM é o marcador acrescentado ao link para identificar a origem da visita. Cada peça recebeu um utm_content distinto, o que permite atribuir qual mensagem gerou qual visita, além do total agregado.</p>
+          <p><strong>Criativos produzidos pela equipe.</strong> As peças de origem dos anúncios de setembro saíram da Esquina Criativa e constam no relatório da equipe como “Produções para Tráfego”: o vídeo de chamada para o dia 20 no Vibes (15/09) e o vídeo com o gatilho “Tempo”, também para o dia 20 no Vibes (16/09), de Ana Beatriz; a arte (17/09), de Mariana e Kaléu.</p>
         </div>
       </div>
     </div>
 
     <div class="etapa reveal">
       <span class="n">1.6</span>
-      <div class="sub">
+      <div class="sub com-quem">
         <h3>Resultados medidos</h3>
+        <span class="quem">Marcio Wellington · tráfego e dados</span>
         <div class="corpo">
           <p>Medido com a campanha ativa. CTR é a proporção de cliques sobre impressões.</p>
           <div class="tabela">
@@ -741,8 +1085,9 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
     <div class="etapa reveal">
       <span class="n">1.7</span>
-      <div class="sub">
+      <div class="sub com-quem">
         <h3>Análise, relatórios e transferência de conhecimento</h3>
+        <span class="quem">Marcio Wellington · tráfego e dados</span>
         <div class="corpo">
           <ul class="lista">
             <li>Relatório de métricas e projeções em PDF, com cenários de conversão e modelagem de receita pela escada real de lotes.</li>
@@ -755,49 +1100,215 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
   </div>
 </section>
 
-<section class="secao" id="secao-02" data-slug="bonito">
+<section class="secao" id="secao-02" data-slug="design">
   <div class="miolo">
-    <div class="secao-cab reveal"><span class="rotulo">Frente 02</span><h2 class="titulo">Audiovisual · Festival de Inverno de Bonito</h2></div>
-    <div class="corpo grupo">
-      <p class="reveal">Cobertura do evento em imagem aérea, fotografia e vídeo, com pós-produção do material fotográfico.</p>
-      <ul class="itens">
-        <li class="reveal"><span class="sub"><span class="t">Captação aérea com drone</span><span class="d">cobertura do evento.</span></span></li>
-        <li class="reveal"><span class="sub"><span class="t">Fotografia geral do evento</span><span class="d">cobertura fotográfica.</span></span></li>
-        <li class="reveal"><span class="sub"><span class="t">Edição e tratamento de imagens</span><span class="d">pós-produção do material fotográfico.</span></span></li>
-        <li class="reveal"><span class="sub"><span class="t">Cobertura parcial em vídeo</span><span class="d">registro dos 25 minutos finais do evento, em captação corrida e sem cortes.</span></span></li>
-      </ul>
+    <div class="secao-cab reveal"><span class="rotulo">Frente 02</span><h2 class="titulo">Identidade visual, design e conteúdo</h2></div>
+    <div class="corpo grupo intro">
+      <p class="reveal">Trabalho de imagem da banda: a identidade visual nova, as peças de divulgação de abril a setembro, o lançamento de Fulorô, a produção impressa e a capa de “TEU PAR”. Os números saem do relatório da equipe.</p>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">2.1</span>
+      <div class="sub com-quem">
+        <h3>Identidade visual completa e reformulação do Instagram</h3>
+        <span class="quem">Mariana · direção de arte e identidade visual</span>
+        <div class="corpo">
+          <p>Foi executada em abril, como primeira entrega da equipe. O pacote previa conceito visual, manual de identidade (MIV) e camiseta; o relatório registra a identidade visual como completa.</p>
+          <ul class="lista">
+            <li>Reconstrução completa da marca, para marcar a nova fase da Forrodiando.</li>
+            <li>Reformulação do Instagram, com layout padronizado e alinhado ao novo posicionamento digital.</li>
+            <li>Divulgação da nova identidade no feed, em carrossel, em 1º de abril.</li>
+            <li>A partir da divulgação, linha estética mais descontraída para as datas de show e o material de engajamento.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">2.2</span>
+      <div class="sub com-quem">
+        <h3>Artes de feed, stories e carrosséis</h3>
+        <span class="quem">Mariana · direção de arte e identidade visual;<br>Kaléu · artes (setembro)</span>
+        <div class="corpo">
+          <p>Foram produzidas 53 artes (16 animadas e 37 estáticas, para story e post) e 8 carrosséis entre abril e setembro. As 12 artes estáticas de setembro são de Mariana e Kaléu; o restante é de Mariana. O pacote previa 6 artes por mês; o relatório registra, de abril a setembro, 14, 7, 8, 6, 13 e 13 artes e carrosséis.</p>
+          <p class="destaque">O que as peças chamaram, mês a mês:</p>
+          <ul class="lista">
+            <li><strong>Abril</strong> — “Nova identidade”; divulgação do show no Noca, dia 20, com stories de lotes e variações de preço; “Agenda Abril”; datas extras no Noca; Dia do Trabalhador.</li>
+            <li><strong>Maio</strong> — Forró de Esquina, com artes animadas de lotes; “Quintas no Noca”, 14 e 21 de maio; apoio da “A Musical”; pré-save de Fulorô para 6 de junho.</li>
+            <li><strong>Junho</strong> — “Agenda Junho”; Quintas no Noca, três datas; stories “É hoje” para as Quintas no Noca, Caarapó e o Arraiá da UFGD.</li>
+            <li><strong>Julho</strong> — “Dump dos shows de junho”; “Agenda Julho”; Quintas no Noca, com stories “É hoje”; novas datas de show.</li>
+            <li><strong>Agosto</strong> — agenda de shows de agosto; Forró de Esquina, inclusive o aviso de adiamento; Quintas no Noca com convidado; a comunidade do WhatsApp; Festival de Inverno de Bonito; indicações de músicas; trend “Acho chique quem”.</li>
+            <li><strong>Setembro</strong> — post oficial dos 7 anos; Two Sessions (a Twoco), 13/09; Noca 17/09 e Dona Olinda 19/09, na série dos 7 anos; informativo do Vibes; aviso de sorteio do Noca; notícia da Forrodiando. As peças dos 7 anos e da Two Sessions saíram em post, story e banner para o site.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">2.3</span>
+      <div class="sub com-quem">
+        <h3>Lançamento de Fulorô</h3>
+        <span class="quem">Mariana · direção de arte e identidade visual</span>
+        <div class="corpo">
+          <p>Foi executado entre maio e junho: capa da música (4 de maio), artes de divulgação e arte animada; arte animada de pré-save (26 de maio); carrossel com a história de Fulorô (4 de junho); story animado de lançamento (6 de junho); carrossel de fotos com a música nova (23 de junho). O relatório registra 3 peças de lançamento em maio sem indicar responsável; as demais artes do período são de Mariana, e a atribuição segue essa base.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">2.4</span>
+      <div class="sub com-quem">
+        <h3>Produção impressa</h3>
+        <span class="quem">Mariana · direção de arte e identidade visual;<br>Kaléu · artes e impressos</span>
+        <div class="corpo">
+          <p class="destaque">Três peças, em setembro:</p>
+          <ul class="lista">
+            <li><strong>Banner</strong> — divulgação do Instagram.</li>
+            <li><strong>Cartaz A3</strong> — divulgação do Vibes.</li>
+            <li><strong>Cartaz A4</strong> — música nova, com QR code.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">2.5</span>
+      <div class="sub com-quem">
+        <h3>Capa para Spotify — “TEU PAR”</h3>
+        <span class="quem">Marcio Wellington · design</span>
+        <div class="corpo">
+          <ul class="lista">
+            <li><strong>Capa para Spotify</strong> — arte de capa para o lançamento da música “TEU PAR”.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">2.6</span>
+      <div class="sub com-quem">
+        <h3>Colaboração com a equipe criativa na edição para redes</h3>
+        <span class="quem">Marcio Wellington · design</span>
+        <div class="corpo">
+          <ul class="lista">
+            <li><strong>Colaboração com a equipe criativa</strong> — edição de material para redes sociais.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="secao" id="secao-03" data-slug="unigran">
+<section class="secao" id="secao-03" data-slug="planejamento">
   <div class="miolo">
-    <div class="secao-cab reveal"><span class="rotulo">Frente 03</span><h2 class="titulo">Audiovisual · Ativação UNIGRAN</h2></div>
-    <div class="corpo grupo">
-      <p class="reveal">Registro aéreo da ativação da banda na UNIGRAN.</p>
-      <ul class="itens">
-        <li class="reveal"><span class="sub"><span class="t">Captação aérea com drone</span><span class="d">cobertura da ativação.</span></span></li>
-      </ul>
+    <div class="secao-cab reveal"><span class="rotulo">Frente 03</span><h2 class="titulo">Planejamento e calendário</h2></div>
+    <div class="corpo grupo intro">
+      <p class="reveal">Um planejamento por mês, de abril a setembro, com conceito, calendário de publicações e pauta de shows. Os números saem do relatório da equipe.</p>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">3.1</span>
+      <div class="sub com-quem">
+        <h3>Planejamentos mensais</h3>
+        <span class="quem">Sarah Campos · planejamento</span>
+        <div class="corpo">
+          <ul class="lista">
+            <li>Seis planejamentos, um por mês, de abril a setembro.</li>
+            <li>Conceitos registrados: “Nova era do Forrodiando” (abril); “Forrodiando no Noca e pré-divulgação da música nova” (maio); Festival de Inverno de Bonito 2026, com story em tempo real e cobertura (agosto); Twoco, 13 de setembro, com story em tempo real e cobertura (setembro). Junho e julho não têm conceito registrado no relatório.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">3.2</span>
+      <div class="sub com-quem">
+        <h3>Calendário de publicações</h3>
+        <span class="quem">Sarah Campos · planejamento</span>
+        <div class="corpo">
+          <ul class="lista">
+            <li>66 publicações calendarizadas, cada uma com data, formato e chamada: 10 em abril, 11 em maio, 11 em junho, 9 em julho, 11 em agosto e 14 em setembro.</li>
+            <li>O calendário priorizou a agenda mensal de shows, os stories “É hoje” no dia de cada apresentação, os lotes de ingresso, os lançamentos (Fulorô) e, em setembro, a série dos 7 anos da banda.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">3.3</span>
+      <div class="sub com-quem">
+        <h3>Participação nos vídeos</h3>
+        <span class="quem">Sarah Campos · planejamento</span>
+        <div class="corpo">
+          <ul class="lista">
+            <li>Entrevistas com o público do forró e com integrantes da banda no primeiro vídeo de interação, em maio.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="secao" id="secao-04" data-slug="design">
+<section class="secao" id="secao-04" data-slug="audiovisual">
   <div class="miolo">
-    <div class="secao-cab reveal"><span class="rotulo">Frente 04</span><h2 class="titulo">Design e conteúdo</h2></div>
-    <div class="corpo grupo">
-      <p class="reveal">Trabalho de imagem para as redes sociais e para o lançamento em streaming.</p>
-      <ul class="itens">
-        <li class="reveal"><span class="sub"><span class="t">Colaboração com a equipe criativa</span><span class="d">edição de material para redes sociais.</span></span></li>
-        <li class="reveal"><span class="sub"><span class="t">Capa para Spotify</span><span class="d">arte de capa para o lançamento da música “TEU PAR”.</span></span></li>
-      </ul>
+    <div class="secao-cab reveal"><span class="rotulo">Frente 04</span><h2 class="titulo">Audiovisual</h2></div>
+    <div class="corpo grupo intro">
+      <p class="reveal">Vídeo e fotografia de shows, ativações e festival, de abril a setembro.</p>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">4.1</span>
+      <div class="sub com-quem">
+        <h3>Reels e coberturas de shows</h3>
+        <span class="quem">Ana Beatriz · vídeo e coberturas</span>
+        <div class="corpo">
+          <p>Foram produzidos 21 vídeos para reels e 13 coberturas de shows, em vídeo e em foto, entre abril e setembro — 12 shows, com o Forró do Trabalhador coberto em foto e em vídeo. O pacote previa 2 reels e 2 coberturas por mês; o relatório registra, de abril a setembro, 3, 3, 3, 3, 2 e 7 reels, e 2, 3, 3, 2, 2 e 1 coberturas.</p>
+          <ul class="lista">
+            <li><strong>Coberturas</strong> — Dona Olinda e Noca (abril); Forró do Trabalhador, no Noca, e 1ª edição do Forró de Esquina (maio); Arraiá do Vem de Feira, Batuque, na festa junina, e Arraiá da Gedê (junho); Arraiá dos Ipês e Arraiá do Indaiá (julho); Festival de Inverno de Bonito e 2ª edição do Forró de Esquina, em vídeo no formato POV (agosto); Twoco (setembro).</li>
+            <li><strong>Fotos de cobertura</strong>, publicadas em carrossel — Forró do Trabalhador (1º de maio), Forró de Esquina (18 de maio), Festival de Inverno de Bonito (30 de agosto); na Twoco, carrossel de vídeo de momentos (14 de setembro).</li>
+            <li><strong>Vídeos além das coberturas</strong> — reels do ensaio fotográfico (abril); divulgação do 1º Forró de Esquina e de Fulorô (maio); trend adaptada para Fulorô (julho); divulgação do 2º Forró de Esquina, com chamada de Victor (agosto); trend “Barulho de cada instrumento”, vídeo geral do FIB 2026, especial de 7 anos da Forrodiando, divulgação da Twoco e os dois vídeos para o dia 20 no Vibes (setembro).</li>
+          </ul>
+          <p><strong>O que a equipe registrou.</strong> O vídeo de cobertura no Noca, em abril, teve 7.226 visualizações. Em junho, o vídeo só de cobertura já não engajava como antes; o vídeo com fala de integrante, a Erika, teve bom resultado. Em julho, com coberturas sem fala, o engajamento ficou abaixo do de junho; em agosto, a chamada de Victor na abertura do vídeo recuperou o patamar. A leitura da equipe, mês após mês, é que o público responde mais à interação da banda do que ao registro do evento.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">4.2</span>
+      <div class="sub com-quem">
+        <h3>Festival de Inverno de Bonito — drone, fotografia e vídeo</h3>
+        <span class="quem">Marcio Wellington · audiovisual</span>
+        <div class="corpo">
+          <p>Cobertura do evento em imagem aérea, fotografia e vídeo, com pós-produção do material fotográfico.</p>
+          <ul class="lista">
+            <li><strong>Captação aérea com drone</strong> — cobertura do evento.</li>
+            <li><strong>Fotografia geral do evento</strong> — cobertura fotográfica.</li>
+            <li><strong>Edição e tratamento de imagens</strong> — pós-produção do material fotográfico.</li>
+            <li><strong>Cobertura parcial em vídeo</strong> — registro dos 25 minutos finais do evento, em captação corrida e sem cortes.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="etapa reveal">
+      <span class="n">4.3</span>
+      <div class="sub com-quem">
+        <h3>Ativação UNIGRAN — drone</h3>
+        <span class="quem">Marcio Wellington · audiovisual</span>
+        <div class="corpo">
+          <p>Registro aéreo da ativação da banda na UNIGRAN.</p>
+          <ul class="lista">
+            <li><strong>Captação aérea com drone</strong> — cobertura da ativação.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="secao" id="secao-05" data-slug="infraestrutura">
   <div class="miolo">
-    <div class="secao-cab reveal"><span class="rotulo">Frente 05</span><h2 class="titulo">Infraestrutura digital</h2></div>
+    <div class="secao-cab reveal"><span class="rotulo">Frente 05</span><h2 class="titulo">Infraestrutura digital</h2><span class="quem">Marcio Wellington · infraestrutura digital</span></div>
     <div class="corpo grupo">
       <p class="reveal">Base técnica da presença da marca fora das redes sociais.</p>
       <ul class="itens">
@@ -810,7 +1321,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
 <section class="secao" id="secao-06" data-slug="marca">
   <div class="miolo">
-    <div class="secao-cab reveal"><span class="rotulo">Frente 06</span><h2 class="titulo">Propriedade intelectual</h2></div>
+    <div class="secao-cab reveal"><span class="rotulo">Frente 06</span><h2 class="titulo">Propriedade intelectual</h2><span class="quem">Marcio Wellington · propriedade intelectual</span></div>
     <div class="corpo grupo">
       <p class="reveal">Levantamento para o registro do nome da banda como marca.</p>
       <ul class="itens">
@@ -820,49 +1331,66 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
   </div>
 </section>
 
+<section class="secao publico" id="publico">
+  <div class="miolo">
+    <div class="secao-cab reveal"><span class="rotulo">Formulário da ativação na UNIGRAN</span><h2 class="titulo">O que o público disse</h2></div>
+    <div class="grupo citacoes">
+      <blockquote class="reveal"><p>Não tinha conhecimento, estou no décimo semestre do curso, na parte de estágio e não estou indo pra faculdade, porém, minha irmã mandou alguns vídeos de vocês tocando hoje ali na Unigran e mandou o link também, decidi responder ao formulário porq achei uma ideia muito legal, apesar de que, nesses 5 anos de faculdade, nunca tive a honra de prestigiá-los pessoalmente, continuem com esse projeto e assim, consigam alcançar mais pessoas com esse gênero musical divertido</p></blockquote>
+      <blockquote class="reveal"><p>Forró sul-mato-grossense, vibrante, autoral, cheio de identidade, emoção e energia.</p></blockquote>
+      <blockquote class="reveal"><p>Uma equipe bem organizada, como uma identidade visual incrível e impecável.</p></blockquote>
+      <blockquote class="reveal"><p>Impressionante, magnífico, animado e divertido. Sai da faculdade eufórica</p></blockquote>
+    </div>
+    <p class="nota-fonte reveal">Respostas ao formulário aplicado na ativação da banda na UNIGRAN; publicadas sem identificação.</p>
+  </div>
+</section>
+
 <section class="secao" id="fica">
   <div class="miolo">
     <div class="secao-cab reveal"><span class="rotulo">Ativos permanentes</span><h2 class="titulo">O que fica com a banda</h2></div>
     <div class="corpo grupo">
-      <p class="reveal">Os itens abaixo permanecem com a banda independentemente da continuidade do trabalho. São contas, dados, acessos e material que já estão sob o nome da Forrodiando e continuam disponíveis para qualquer evento futuro, em qualquer casa.</p>
+      <p class="reveal">Os itens abaixo permanecem com a banda independentemente da continuidade do trabalho. São contas, dados, acessos, identidade e material que já estão sob o nome da Forrodiando e continuam disponíveis para qualquer evento futuro, em qualquer casa.</p>
 
       <!-- Mapa só no desktop: no celular, a lista abaixo é o próprio mapa. O SVG não carrega as notas longas; a lista é a versão completa. -->
       <figure class="esquema mapa so-desktop reveal" data-shot="mapa">
         <figcaption class="rotulo">Mapa do que fica</figcaption>
-        <svg viewBox="0 0 1000 560" role="img" aria-label="Sete ativos ligados à banda: conta de anúncios, Business Manager, dataset/pixel, dois públicos personalizados, benchmark histórico, domínio e material audiovisual; e, como referência cruzada, o site de portfólio em andamento">
-          <path class="traco" d="M500 236 V108"/>
-          <path class="traco" d="M531.1 248.9 L621.3 158.7"/>
-          <path class="traco" d="M544 280 H672"/>
-          <path class="traco" d="M531.1 311.1 L621.3 401.3"/>
-          <path class="traco" d="M500 324 V452"/>
-          <path class="traco" d="M468.9 311.1 L378.7 401.3"/>
-          <path class="traco" d="M456 280 H328"/>
-          <path class="traco" d="M468.9 248.9 L378.7 158.7"/>
+        <svg viewBox="0 0 1000 500" role="img" aria-label="Oito ativos ligados à banda: conta de anúncios, Business Manager, dataset/pixel, dois públicos personalizados, benchmark histórico, domínio, identidade visual e acervo de conteúdo, e material audiovisual; e, como referência cruzada, o site de portfólio em andamento">
+          <path class="traco" d="M500 236 L500 118"/>
+          <path class="traco" d="M530.9 248.7 L622.9 155.5"/>
+          <path class="traco" d="M543.5 273.5 L689 251.7"/>
+          <path class="traco" d="M539.5 299.4 L666 361.5"/>
+          <path class="traco" d="M517.3 320.4 L565.3 432.4"/>
+          <path class="traco" d="M482.7 320.4 L434.7 432.4"/>
+          <path class="traco" d="M460.5 299.4 L334 361.5"/>
+          <path class="traco" d="M456.5 273.5 L311 251.7"/>
+          <path class="traco" d="M469.1 248.7 L377.1 155.5"/>
           <g class="iso" transform="translate(476 256) scale(0.1955)"><use href="#iso" width="245.51" height="245.48"/></g>
-          <circle class="no" cx="500" cy="100" r="5"/>
-          <text class="nome" x="500" y="70" text-anchor="middle">Conta de anúncios configurada e validada</text>
-          <text class="nota" x="500" y="87" text-anchor="middle">“Forrodiando Eventos” · ID 1613324519741494</text>
-          <circle class="no" cx="627" cy="153" r="5"/>
-          <text class="nome" x="643" y="150">Business Manager</text>
-          <text class="nota" x="643" y="167">acesso administrativo transferível</text>
-          <circle class="no" cx="680" cy="280" r="5"/>
-          <text class="nome" x="696" y="277">Dataset/pixel com histórico próprio</text>
-          <text class="nota" x="696" y="294">“Pixel Eventos Forrodiando” · ID 1503472321452420</text>
-          <circle class="no" cx="627" cy="407" r="5"/>
-          <text class="nome" x="643" y="404">Dois públicos personalizados</text>
-          <text class="nota" x="643" y="421">FD_MORNO_IG_365D · FD_VIU_INGRESSO_NAO_COMPROU_30D</text>
-          <circle class="no" cx="500" cy="460" r="5"/>
-          <text class="nome" x="500" y="488" text-anchor="middle">Benchmark histórico da conta</text>
-          <text class="nota" x="500" y="505" text-anchor="middle">CPM, CPC, CTR e custo por visualização</text>
-          <circle class="no" cx="373" cy="407" r="5"/>
-          <text class="nome" x="357" y="404" text-anchor="end">Domínio</text>
-          <text class="nota" x="357" y="421" text-anchor="end">dois anos; renovação com responsável designado</text>
-          <circle class="no" cx="320" cy="280" r="5"/>
-          <text class="nome" x="304" y="277" text-anchor="end">Material audiovisual bruto e tratado</text>
-          <text class="nota" x="304" y="294" text-anchor="end">Bonito, UNIGRAN e capa de “TEU PAR”</text>
-          <circle class="no" cx="373" cy="153" r="5"/>
-          <text class="nome" x="357" y="150" text-anchor="end">Site de portfólio e agenda</text>
-          <text class="nota" x="357" y="167" text-anchor="end">em andamento; referência da seção 05</text>
+          <circle class="no" cx="500" cy="110" r="5"/>
+          <text class="nome" x="500" y="80" text-anchor="middle">Conta de anúncios configurada e validada</text>
+          <text class="nota" x="500" y="97" text-anchor="middle">“Forrodiando Eventos” · ID 1613324519741494</text>
+          <circle class="no" cx="628.6" cy="149.8" r="5"/>
+          <text class="nome" x="644.6" y="146.8">Business Manager</text>
+          <text class="nota" x="644.6" y="163.8">acesso administrativo transferível</text>
+          <circle class="no" cx="697" cy="250.5" r="5"/>
+          <text class="nome" x="713" y="247.5">Dataset/pixel com histórico próprio</text>
+          <text class="nota" x="713" y="264.5">“Pixel Eventos Forrodiando” · ID 1503472321452420</text>
+          <circle class="no" cx="673.2" cy="365" r="5"/>
+          <text class="nome" x="689.2" y="362">Dois públicos personalizados</text>
+          <text class="nota" x="689.2" y="379">FD_MORNO_IG_365D · FD_VIU_INGRESSO_NAO_COMPROU_30D</text>
+          <circle class="no" cx="568.4" cy="439.7" r="5"/>
+          <text class="nome" x="584.4" y="436.7">Benchmark histórico da conta</text>
+          <text class="nota" x="584.4" y="453.7">CPM, CPC, CTR e custo por visualização</text>
+          <circle class="no" cx="431.6" cy="439.7" r="5"/>
+          <text class="nome" x="415.6" y="436.7" text-anchor="end">Domínio</text>
+          <text class="nota" x="415.6" y="453.7" text-anchor="end">dois anos; renovação com responsável designado</text>
+          <circle class="no" cx="326.8" cy="365" r="5"/>
+          <text class="nome" x="310.8" y="362" text-anchor="end">Identidade visual completa e acervo de conteúdo</text>
+          <text class="nota" x="310.8" y="379" text-anchor="end">conceito, manual, artes, vídeos e fotos · abril a setembro</text>
+          <circle class="no" cx="303" cy="250.5" r="5"/>
+          <text class="nome" x="287" y="247.5" text-anchor="end">Material audiovisual bruto e tratado</text>
+          <text class="nota" x="287" y="264.5" text-anchor="end">Bonito, UNIGRAN e capa de “TEU PAR”</text>
+          <circle class="no" cx="371.4" cy="149.8" r="5"/>
+          <text class="nome" x="355.4" y="146.8" text-anchor="end">Site de portfólio e agenda</text>
+          <text class="nota" x="355.4" y="163.8" text-anchor="end">em andamento; referência da seção 05</text>
         </svg>
       </figure>
 
@@ -873,6 +1401,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
         <li class="reveal"><span class="sub"><span class="t">Dois públicos personalizados</span><span class="d">FD_MORNO_IG_365D (ID 120249053613520650) e FD_VIU_INGRESSO_NAO_COMPROU_30D (ID 120249053938310650).</span></span></li>
         <li class="reveal"><span class="sub"><span class="t">Benchmark histórico da conta</span><span class="d">CPM, CPC, CTR e custo por visualização reais da marca, parâmetro para o próximo planejamento.</span></span></li>
         <li class="reveal"><span class="sub"><span class="t">Domínio</span><span class="d">vigência de dois anos; ao fim desse prazo, a renovação precisa de um responsável designado pela banda.</span></span></li>
+        <li class="reveal"><span class="sub"><span class="t">Identidade visual completa e acervo de conteúdo</span><span class="d">conceito, manual, artes, vídeos e fotos produzidos pela Esquina Criativa de abril a setembro.</span></span></li>
         <li class="reveal"><span class="sub"><span class="t">Material audiovisual bruto e tratado</span><span class="d">Festival de Inverno de Bonito e ativação UNIGRAN, além da capa de “TEU PAR”.</span></span></li>
         <li class="reveal"><span class="sub"><span class="t">Site de portfólio e agenda</span><span class="d">em andamento; consta aqui apenas como referência cruzada da seção 05, ainda sem status de entregue.</span></span></li>
       </ul>
@@ -882,11 +1411,11 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
 <section class="fecho secao" id="fecho">
   <div class="miolo grupo">
-    <p class="reveal">Registro, portanto, que a banda passa a ter o que faltava no ponto de partida: uma conta que veicula, um pixel que coleta, dois públicos prontos e o primeiro benchmark de custo com números próprios. O resultado em bilheteria acompanhou a escala da verba; a base construída, por sua vez, serve a qualquer evento daqui em diante.</p>
-    <p class="reveal">Nesse sentido, três encaminhamentos ficam com vocês. Guardem os acessos da conta de anúncios, do Business Manager e do dataset, pois são eles que dão continuidade ao histórico. Designem quem responde pela renovação do domínio ao fim dos dois anos, para que o site e a validação junto ao Meta não fiquem sem endereço. Mantenham o Business Manager ativo, mesmo em período sem campanha, porque é a ele que a conta, o pixel e os públicos estão vinculados.</p>
-    <p class="reveal">Por fim, o site de portfólio e agenda segue em andamento e será tratado à parte quando estiver concluído. Ressalto que tudo o que consta aqui pode ser conferido nas plataformas pelos IDs registrados.</p>
+    <p class="reveal">Registro, portanto, que a banda passa a ter o que faltava no ponto de partida: uma identidade visual própria, uma presença digital operada mês a mês, uma conta que veicula, um pixel que coleta, dois públicos prontos e o primeiro benchmark de custo com números próprios. O resultado em bilheteria acompanhou a escala da verba; a base construída e o acervo produzido, por sua vez, servem a qualquer evento daqui em diante.</p>
+    <p class="reveal">Esta entrega reúne o trabalho da Esquina Criativa — Mariana, Sarah Campos, Ana Beatriz e Kaléu — e o meu. Cada item traz quem o executou; os números de produção saem do relatório da própria equipe, e os de mídia, das plataformas, pelos IDs registrados.</p>
+    <p class="reveal">Nesse sentido, quatro encaminhamentos ficam com vocês. Guardem os acessos da conta de anúncios, do Business Manager e do dataset, pois são eles que dão continuidade ao histórico. Designem quem responde pela renovação do domínio ao fim dos dois anos, para que o site e a validação junto ao Meta não fiquem sem endereço. Mantenham o Business Manager ativo, mesmo em período sem campanha, porque é a ele que a conta, o pixel e os públicos estão vinculados. Guardem, por fim, o acervo — identidade, artes, vídeos e fotos — em um só lugar, sob o nome da banda. O site de portfólio e agenda segue em andamento e será tratado à parte quando estiver concluído.</p>
     <p class="ass reveal"><span>Att.,</span><span>Marcio W.</span></p>
-    <svg class="marca reveal" viewBox="0 0 868.01 207.07" fill="currentColor" role="img" aria-label="MARC\O WELLINGTON"><use href="#lm"/></svg>
+    <div class="marcas reveal"><svg class="marca" viewBox="0 0 868.01 207.07" fill="currentColor" role="img" aria-label="MARC\O WELLINGTON"><use href="#lm"/></svg><span class="x" aria-hidden="true">×</span><img src="img/esquina-cor.png" alt="Esquina Criativa" width="997" height="405"></div>
   </div>
 </section>
 
@@ -896,6 +1425,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
   <div class="miolo">
     <svg class="iso" viewBox="0 0 245.51 245.48" fill="currentColor" aria-hidden="true"><use href="#iso"/></svg>
     <p><span class="nome">MARC\O WELLINGTON</span><span class="sep"> · </span><a href="mailto:marciowellingtonjr@gmail.com">marciowellingtonjr@gmail.com</a><span class="sep"> · </span><a href="tel:+5567998241003">+55 67 99824-1003</a></p>
+    <img class="esquina" src="img/esquina-papel.png" alt="Esquina Criativa" height="24" width="59">
   </div>
 </footer>
 
@@ -995,7 +1525,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
     requestAnimationFrame(atualiza);
   }, { passive: true });
   /* Tabelas que rolam na horizontal ganham a máscara na borda direita; ela some quando a rolagem chega ao fim. */
-  var tabelas = Array.prototype.slice.call(document.querySelectorAll('.tabela'));
+  var tabelas = Array.prototype.slice.call(document.querySelectorAll('.tabela, .linha-tempo'));
   function marcaRolaveis() {
     tabelas.forEach(function (t) {
       var rola = t.scrollWidth > t.clientWidth + 2 && t.scrollLeft + t.clientWidth < t.scrollWidth - 2;
