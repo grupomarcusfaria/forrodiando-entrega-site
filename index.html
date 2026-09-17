@@ -46,7 +46,8 @@ svg{display:block}
 
 /* ---------- utilitários ---------- */
 .rotulo{font-size:var(--fs-xs);font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--text-2)}
-.miolo{max-width:var(--miolo);margin-inline:auto}
+/* Alinhado à margem esquerda, na mesma linha do logo do índice; em telas largas o miolo não centraliza. */
+.miolo{max-width:var(--miolo);margin-inline:0}
 .secao{padding-block:var(--sp-8);padding-inline:var(--gutter);border-top:var(--hairline) solid var(--line)}
 .secao-cab{margin-bottom:var(--sp-7)}
 .secao-cab .rotulo{display:block;margin-bottom:var(--sp-4)}
@@ -61,9 +62,9 @@ svg{display:block}
 .indice{position:fixed;inset:0 0 auto 0;z-index:10;height:var(--indice-h);background:rgba(23,28,26,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:var(--hairline) solid var(--line);transition:transform var(--t-entrada);will-change:transform}
 .indice.oculto{transform:translateY(-100%)}
 .indice nav{height:100%;padding-inline:var(--gutter);display:flex;align-items:center;gap:var(--sp-6)}
-.indice .marca{display:flex;align-items:center;gap:var(--sp-3);height:18px;flex:none;color:var(--text)}
+.indice .marca{display:flex;align-items:center;gap:var(--sp-3);height:24px;flex:none;color:var(--text)}
 .indice .marca svg{height:18px;width:auto}
-.indice .marca img{display:block;height:18px;width:auto}
+.indice .marca img{display:block;height:24px;width:auto}
 .indice .marca .x{font-size:var(--fs-sm);line-height:1;color:var(--text-3)}
 .indice ul{display:flex;gap:var(--sp-4);min-width:0;overflow-x:auto;scrollbar-width:none;white-space:nowrap;margin-left:auto}
 .indice ul::-webkit-scrollbar{display:none}
@@ -81,10 +82,10 @@ svg{display:block}
 /* Dentro do flex em coluna, margin-inline:auto encolheria o miolo ao max-content do h1 e o deslocaria; a borda esquerda tem de ser uma linha só. */
 .hero .miolo{width:100%}
 .hero .rotulo{display:block;margin-bottom:var(--sp-6)}
-.hero .iso{width:40px;height:40px;color:var(--text)}
-.hero .marcas{display:flex;align-items:center;gap:var(--sp-4);margin-bottom:var(--sp-6)}
+.hero .iso{width:28px;height:28px;color:var(--text)}
+.hero .marcas{display:flex;align-items:center;gap:var(--sp-5);margin-bottom:var(--sp-6)}
 .hero .marcas .x{font-size:var(--fs-xl);line-height:1;color:var(--text-3)}
-.hero .marcas img{display:block;height:40px;width:auto}
+.hero .marcas img{display:block;height:28px;width:auto}
 .hero h1{font-family:var(--font-display);font-weight:700;font-size:var(--fs-4xl);line-height:.98;letter-spacing:-.02em;text-wrap:balance}
 .hero h1 .sep{color:var(--text-3);font-weight:500}
 .hero h1 .nb{white-space:nowrap}
@@ -234,7 +235,7 @@ footer .iso{width:24px;height:24px;color:var(--text);flex:none}
 footer a{color:var(--text-2);border-bottom:var(--hairline) solid var(--line-2);transition:color var(--t-micro),border-color var(--t-micro)}
 footer a:hover{color:var(--text);border-color:var(--text)}
 footer .sep{color:var(--text-3)}
-footer .esquina{display:block;height:24px;width:auto;margin-left:auto}
+footer .esquina{display:block;height:28px;width:auto;margin-left:auto}
 /* nome, e-mail e telefone nunca quebram no meio; no celular, um por linha */
 footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap}
 
@@ -380,8 +381,8 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
   .panorama a.etapa .lado{grid-column:2;grid-row:auto;justify-self:start;padding-top:0;margin-top:var(--sp-2)}
   .panorama a.etapa .quem{text-align:left;max-width:none}
   .etapa .sub.com-quem{display:block}
-  .etapa .sub.com-quem>.quem{text-align:left;max-width:none;padding-top:0;margin-top:var(--sp-2)}
-  .hero .marcas img{height:32px}
+  .etapa .sub.com-quem>.quem{justify-self:start;width:100%;text-align:left;max-width:none;padding-top:0;margin-top:var(--sp-2)}
+  .hero .marcas img{height:24px}
   .hero .iso{width:32px;height:32px}
   .fecho .marca{width:180px}
   .fecho .marcas{gap:var(--sp-4)}
@@ -450,7 +451,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
 <header class="indice" id="indice">
   <nav aria-label="Índice">
-    <a class="marca" href="#topo" aria-label="MARC\O WELLINGTON × Esquina Criativa — voltar ao topo"><svg viewBox="0 0 868.01 207.07" fill="currentColor" aria-hidden="true"><use href="#lm"/></svg><span class="x" aria-hidden="true">×</span><img src="img/esquina-papel.png" alt="Esquina Criativa" height="18" width="44"></a>
+    <a class="marca" href="#topo" aria-label="MARC\O WELLINGTON × Esquina Criativa — voltar ao topo"><svg viewBox="0 0 868.01 207.07" fill="currentColor" aria-hidden="true"><use href="#lm"/></svg><span class="x" aria-hidden="true">×</span><img src="img/esquina-papel.png" alt="Esquina Criativa" height="24" width="59"></a>
     <ul>
       <li><a href="#antes-depois">Antes · depois</a></li>
       <li><a href="#producao">Produção</a></li>
@@ -470,9 +471,8 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
 
 <section class="hero secao" id="topo">
   <div class="miolo grupo">
-    <span class="rotulo reveal">MARC\O WELLINGTON × Esquina Criativa para Forrodiando</span>
-    <div class="marcas reveal" role="img" aria-label="MARC\O WELLINGTON e Esquina Criativa"><svg class="iso" viewBox="0 0 245.51 245.48" fill="currentColor" aria-hidden="true"><use href="#iso"/></svg><span class="x" aria-hidden="true">×</span><img src="img/esquina-papel.png" alt="" height="40" width="98"></div>
-    <h1 class="reveal">Entrega <span class="nb"><span class="sep">·</span> Forrodiando</span></h1>
+    <div class="marcas reveal" role="img" aria-label="MARC\O WELLINGTON e Esquina Criativa"><svg class="iso" viewBox="0 0 245.51 245.48" fill="currentColor" aria-hidden="true"><use href="#iso"/></svg><img src="img/esquina-papel.png" alt="" height="28" width="69"></div>
+    <h1 class="reveal"><span class="nb">Entrega <span class="sep">·</span></span> Forrodiando</h1>
     <p class="linha reveal">Relação do que foi executado para a banda, por quem, e dos ativos já construídos.</p>
     <div class="rolar reveal" aria-hidden="true"><span>rolar</span><i></i></div>
   </div>
@@ -764,7 +764,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
         <circle class="pub cobertura" cx="724.8" cy="135.0" r="5"><title>30/08/2026 · Fotos - Cobertura · Carrossel de fotos do FIB</title></circle>
         <circle class="pub cobertura" cx="729.6" cy="33.0" r="5"><title>31/08/2026 · Reels - Cobertura · 2ª Forró de Esquina (POV)</title></circle>
         <circle class="pub" cx="739.1" cy="33.0" r="5"><title>02/09/2026 · Reels - Trend · Barulho de cada instrumento</title></circle>
-        <circle class="pub" cx="743.8" cy="33.0" r="5"><title>03/09/2026 · Reels · Víde geral do FIB 2026</title></circle>
+        <circle class="pub" cx="743.8" cy="33.0" r="5"><title>03/09/2026 · Reels · Vídeo geral do FIB 2026</title></circle>
         <circle class="pub" cx="748.6" cy="67.0" r="5"><title>04/09/2026 · 3 Arte estática (Post, Story e Banner Site) · Post oficial 7 anos</title></circle>
         <circle class="pub" cx="762.8" cy="67.0" r="5"><title>07/09/2026 · 3 Arte estática (Post, Story e Banner Site) · Two Sessions - 13/09</title></circle>
         <circle class="pub" cx="767.6" cy="33.0" r="5"><title>08/09/2026 · Reels · Especial 7 anos de Forrodiando</title></circle>
@@ -786,7 +786,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
       <div class="grupo">
       <div class="etapa reveal pessoa">
         <span class="n"><span class="num">68</span></span>
-        <div class="sub"><span class="t">Mariana</span><span class="d">direção de arte e identidade visual · identidade visual completa · 44 artes e 8 carrosséis, incluindo o lançamento de Fulorô · 12 artes e 3 impressos com Kaléu</span></div>
+        <div class="sub"><span class="t">Mariana</span><span class="d">direção de arte e identidade visual · identidade visual completa · 41 artes, 3 peças do lançamento de Fulorô e 8 carrosséis · 12 artes e 3 impressos com Kaléu</span></div>
       </div>
       <div class="etapa reveal pessoa">
         <span class="n"><span class="num">6</span></span>
@@ -824,7 +824,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
           <span class="d numeros">7 artes e carrosséis · 3 reels · 3 coberturas · 11 publicações</span>
           <span class="d">Coberturas: Forró do Trabalhador Noca · Forró do Trabalhador · Forró de Esquina.</span>
           <span class="d">Além do pacote: reels da divulgação da música Fulorô e o carrossel de fotos das coberturas.</span>
-          <p class="leitura">Foram feitas duas coberturas de show — o Forró do Trabalhador, em foto e em vídeo, e o Forró de Esquina, em foto —, a divulgação da 1ª edição do Forró de Esquina, com participação do Fulô e patrocínios, e, no fim do mês, o início da divulgação de Fulorô, com pré-save, carrossel com a história e o lançamento nas plataformas. Entrou o primeiro vídeo de interação, com Sarah Campos entrevistando o público do forró e integrantes da banda; a equipe observou que o carrossel de fotos dos forrós engaja.</p>
+          <p class="leitura">Foram feitas duas coberturas de show, em três publicações — o Forró do Trabalhador, em foto e em vídeo, e o Forró de Esquina, em foto —, a divulgação da 1ª edição do Forró de Esquina, com participação do Fulô e patrocínios, e, no fim do mês, o início da divulgação de Fulorô, com pré-save, carrossel com a história e o lançamento nas plataformas. Entrou o primeiro vídeo de interação, com Sarah Campos entrevistando o público do forró e integrantes da banda; a equipe observou que o carrossel de fotos dos forrós engaja.</p>
         </div>
       </div>
       <div class="etapa reveal mes-bloco">
@@ -1038,7 +1038,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
       <span class="n">1.5</span>
       <div class="sub com-quem">
         <h3>Criativos</h3>
-        <span class="quem">Marcio Wellington · tráfego e dados;<br>Ana Beatriz · vídeo;<br>Mariana · arte;<br>Kaléu · arte</span>
+        <span class="quem">Marcio Wellington · tráfego e dados<br>Ana Beatriz · vídeo<br>Mariana · arte<br>Kaléu · arte</span>
         <div class="corpo">
           <p>Foram construídos 7 anúncios sobre 4 criativos distintos.</p>
           <ul class="lista">
@@ -1128,7 +1128,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
       <span class="n">2.2</span>
       <div class="sub com-quem">
         <h3>Artes de feed, stories e carrosséis</h3>
-        <span class="quem">Mariana · direção de arte e identidade visual;<br>Kaléu · artes (setembro)</span>
+        <span class="quem">Mariana · direção de arte e identidade visual<br>Kaléu · artes (setembro)</span>
         <div class="corpo">
           <p>Foram produzidas 53 artes (16 animadas e 37 estáticas, para story e post) e 8 carrosséis entre abril e setembro. As 12 artes estáticas de setembro são de Mariana e Kaléu; o restante é de Mariana. O pacote previa 6 artes por mês; o relatório registra, de abril a setembro, 14, 7, 8, 6, 13 e 13 artes e carrosséis.</p>
           <p class="destaque">O que as peças chamaram, mês a mês:</p>
@@ -1159,7 +1159,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
       <span class="n">2.4</span>
       <div class="sub com-quem">
         <h3>Produção impressa</h3>
-        <span class="quem">Mariana · direção de arte e identidade visual;<br>Kaléu · artes e impressos</span>
+        <span class="quem">Mariana · direção de arte e identidade visual<br>Kaléu · artes e impressos</span>
         <div class="corpo">
           <p class="destaque">Três peças, em setembro:</p>
           <ul class="lista">
@@ -1425,7 +1425,7 @@ footer .nome,footer a[href^="tel:"],footer a[href^="mailto:"]{white-space:nowrap
   <div class="miolo">
     <svg class="iso" viewBox="0 0 245.51 245.48" fill="currentColor" aria-hidden="true"><use href="#iso"/></svg>
     <p><span class="nome">MARC\O WELLINGTON</span><span class="sep"> · </span><a href="mailto:marciowellingtonjr@gmail.com">marciowellingtonjr@gmail.com</a><span class="sep"> · </span><a href="tel:+5567998241003">+55 67 99824-1003</a></p>
-    <img class="esquina" src="img/esquina-papel.png" alt="Esquina Criativa" height="24" width="59">
+    <img class="esquina" src="img/esquina-papel.png" alt="Esquina Criativa" height="28" width="69">
   </div>
 </footer>
 
